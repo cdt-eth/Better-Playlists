@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-let defaultTextColor = '#fff';
 let defaultStyle = {
-  color: defaultTextColor
+  color: '#fff'
 };
 
+/* AGGREGATE COMPONENT */
 class Aggregate extends Component {
   render() {
     return (
@@ -16,6 +16,7 @@ class Aggregate extends Component {
   }
 }
 
+/* FILTER COMPONENT */
 class Filter extends Component {
   render() {
     return (
@@ -27,6 +28,7 @@ class Filter extends Component {
   }
 }
 
+/* PLAYLIST COMPONENT */
 class Playlist extends Component {
   render() {
     return (
@@ -43,11 +45,12 @@ class Playlist extends Component {
   }
 }
 
+/* MAIN COMPONENT */
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1> Title </h1>
+        <h1 style={{ ...defaultStyle, 'font-size': '54px' }}> Title </h1>
         <Aggregate />
         <Aggregate />
         <Filter />
