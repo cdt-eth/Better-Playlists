@@ -6,21 +6,21 @@ let defaultStyle = {
   color: '#fff'
 };
 
-// let fakeServerData = {
-//   user: {
-//     name: 'David',
-//     playlists: [
-//       {
-//         name: 'My favorites',
-//         songs: [
-//           { name: 'When you were young', duration: 30000 },
-//           { name: 'Bones', duration: 45000 },
-//           { name: 'Mr.Brightside', duration: 70000 }
-//         ]
-//       }
-//     ]
-//   }
-// };
+let fakeServerData = {
+  user: {
+    name: 'David',
+    playlists: [
+      {
+        name: 'My favorites',
+        songs: [
+          { name: 'When you were young', duration: 30000 },
+          { name: 'Bones', duration: 45000 },
+          { name: 'Mr.Brightside', duration: 70000 }
+        ]
+      }
+    ]
+  }
+};
 
 /* PLAYLISTCOUNTER COMPONENT */
 class PlaylistCounter extends Component {
@@ -93,7 +93,6 @@ class App extends Component {
     let parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
     if (!accessToken) return;
-
     fetch('https://api.spotify.com/v1/me', {
       headers: { Authorization: 'Bearer ' + accessToken }
     })
