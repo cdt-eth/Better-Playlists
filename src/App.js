@@ -149,7 +149,7 @@ class App extends Component {
             onClick={() => {
               window.location = window.location.href.includes('localhost')
                 ? 'http://localhost:8888/login'
-                : 'https://better-playlists-cdt.herokuapp.com/login';
+                : 'https://better-playlists-cdt-backend.herokuapp.com/login';
             }}
             style={{ padding: '20px', 'font-size': '50px', 'margin-top': '20px' }}
           >
