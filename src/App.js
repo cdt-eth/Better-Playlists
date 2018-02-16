@@ -59,6 +59,9 @@ class Filter extends Component {
       <div style={defaultStyle}>
         <img />
         <input type="text" onKeyUp={event => this.props.onTextChange(event.target.value)} />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
