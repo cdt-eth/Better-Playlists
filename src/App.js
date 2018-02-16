@@ -193,7 +193,7 @@ class App extends Component {
           <div>
             <h1 style={{ ...defaultStyle, 'font-size': '54px', 'margin-top': '5px' }}>
               {' '}
-              {/*{this.state.user.name}'s*/} Christian Turner's Playlists
+              {this.state.user.name}'s's Playlists
             </h1>
 
             <PlaylistCounter playlists={playlistToRender} />
