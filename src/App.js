@@ -46,7 +46,7 @@ class HoursCounter extends Component {
 
     return (
       <div style={{ ...defaultStyle, width: '40%', display: 'inline-block' }}>
-        <h2>{Math.round(totalDuration / 60 / 60)} hours</h2>
+        <h2>{Math.round(totalDuration / 60)} hours</h2>
       </div>
     );
   }
