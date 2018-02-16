@@ -112,13 +112,38 @@ class App extends Component {
       headers: { Authorization: 'Bearer ' + accessToken }
     })
       .then(response => response.json())
-      .then(data =>
+      .then(playlistData => {
+        let playlists = playlistData.items;
+
+        let trackDataPromises = playlists.map(playlist => {
+          let responsePromise = fetch(playlist.tracks.href, {
+            headers: { Authorization: 'Bearer ' + accessToken }
+          });
+          let trackDataPromise = responsePromise.then(response => response.json());
+          return trackDataPromise;
+        });
+
+        let allTracksDataPromises = Promise.all(trackDataPromises);
+
+        let playlistsPromise = allTracksDataPromises.then(trackDatas => {
+          trackDatas.forEach((trackData, i) => {
+            playlists[i].trackDatas = trackData.items.map(item => item.track).map(trackData => ({
+              name: trackData.name,
+              duration: trackData.duration_ms / 1000
+            }));
+          });
+          return playlists;
+        });
+        return playlistsPromise;
+      })
+
+      .then(playlists =>
         this.setState({
-          playlists: data.items.map(item => {
+          playlists: playlists.map(item => {
             return {
               name: item.name,
-              imageUrl: item.images.find(image => image.width).url,
-              songs: []
+              imageUrl: item.images[0].url,
+              songs: item.trackDatas.slice(0, 3)
             };
           })
         })
@@ -128,16 +153,23 @@ class App extends Component {
   render() {
     let playlistToRender =
       this.state.user && this.state.playlists
-        ? this.state.playlists.filter(playlist =>
-            playlist.name.toLowerCase().includes(this.state.filterString.toLowerCase())
-          )
+        ? this.state.playlists.filter(playlist => {
+            let matchesPlaylist = playlist.name.toLowerCase().includes(this.state.filterString.toLowerCase());
+            let matchesSong = playlist.songs.find(song =>
+              song.name.toLowerCase().includes(this.state.filterString.toLowerCase())
+            );
+            return matchesPlaylist || matchesSong;
+          })
         : [];
 
     return (
       <div className="App">
         {this.state.user ? (
           <div>
-            <h1 style={{ ...defaultStyle, 'font-size': '54px' }}>{this.state.user.name}'s Playlists</h1>
+            <h1 style={{ ...defaultStyle, 'font-size': '54px' }}>
+              {' '}
+              {/*{this.state.user.name}'s*/} Christian Turner's Playlists
+            </h1>
 
             <PlaylistCounter playlists={playlistToRender} />
 
@@ -153,7 +185,7 @@ class App extends Component {
                 ? 'http://localhost:8888/login'
                 : 'https://better-playlists-cdt-backend.herokuapp.com/login';
             }}
-            style={{ padding: '20px', 'font-size': '50px', 'margin-top': '20px' }}
+            style={{ padding: '20px', 'font-size': ' 50px', 'margin-top': '20px' }}
           >
             Sign in with Spotify
           </button>
