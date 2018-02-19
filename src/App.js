@@ -56,7 +56,7 @@ class HoursCounter extends Component {
     let hoursCounterStyle = {
       ...counterStyle,
 
-      color: isTooLow ? '#1DB954' : 'white',
+      color: isTooLow ? '#2FD566' : 'white',
       'font-weight': isTooLow ? 'bold' : 'normal'
     };
     return (
@@ -242,7 +242,7 @@ class App extends Component {
               <h1
                 className="playlistName"
                 style={{
-                  color: '#1DB954',
+                  color: '#2FD566',
                   'font-size': '34px',
                   'font-family':
                     'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
@@ -297,7 +297,7 @@ class App extends Component {
                 padding: '20px',
                 'font-size': ' 35px',
                 'margin-top': '150px',
-                'background-color': '#1DB954',
+                'background-color': '#2FD566',
                 border: 'none',
                 width: '35%',
                 'justify-self': 'center',
