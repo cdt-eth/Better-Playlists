@@ -246,7 +246,9 @@ class App extends Component {
                   'font-size': '34px',
                   'font-family':
                     'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
-                  'font-weight': '700'
+                  'font-weight': '700',
+                  'justify-self': 'start',
+                  'margin-left': '30px'
                 }}
               >
                 {' '}
