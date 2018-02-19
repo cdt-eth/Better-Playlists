@@ -56,7 +56,7 @@ class HoursCounter extends Component {
     let hoursCounterStyle = {
       ...counterStyle,
 
-      color: isTooLow ? '#1ED760' : 'white',
+      color: isTooLow ? '#1DB954' : 'white',
       'font-weight': isTooLow ? 'bold' : 'normal'
     };
     return (
@@ -242,7 +242,7 @@ class App extends Component {
               <h1
                 className="playlistName"
                 style={{
-                  ...defaultStyle,
+                  color: '#1DB954',
                   'font-size': '34px',
                   'font-family':
                     'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
@@ -259,7 +259,7 @@ class App extends Component {
 
               <Filter className="mainFilter" onTextChange={text => this.setState({ filterString: text })} />
               <img
-                src={require('./images/Spotify_Icon_CMYK_White copy.png')}
+                src={require('./images/Spotify_Icon_RGB_Green.png')}
                 className="spotifyIcon"
                 style={{ 'padding-left': '5px', height: '42px' }}
               />
