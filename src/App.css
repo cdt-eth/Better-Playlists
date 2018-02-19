@@ -1,7 +1,37 @@
 html,
 body {
-  background-color: #121212;
+  background-color: black;
 }
 body {
-  padding: 10px;
+  display: grid;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+playlistName {
+  grid-area: 'name';
+}
+bothCounters {
+  grid-area: 'counters';
+}
+mainFilter {
+  grid-area: 'filter';
+}
+spotifyIcon {
+  grid-area: 'spotIcon';
+}
+
+@media (max-width: 767px) {
+  .topItems {
+    display: grid;
+    grid-column: 1/-1;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas:
+      'name'
+      'counters'
+      'filter'
+      'spotIcon';
+  }
 }

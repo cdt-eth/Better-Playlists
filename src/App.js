@@ -5,16 +5,23 @@ import queryString from 'query-string';
 
 let defaultStyle = {
   color: '#fff',
-  'font-family': 'proxima nova, sans-serif'
+  'font-family':
+    'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
+  'font-weight': '500'
 };
 let counterStyle = {
   ...defaultStyle,
-  width: '40%',
-  display: 'inline-block',
-  'margin-bottom': '20px',
+
   'font-size': '20px',
   'line-height': '30px'
 };
+
+// let playlistGridStyle = {
+//   display: 'grid',
+//   'grid-template-columns': 'repeat(3, 1fr',
+//   'grid-gap': '10x',
+//   'justify-content': 'center'
+// };
 
 /* PLAYLISTCOUNTER COMPONENT */
 class PlaylistCounter extends Component {
@@ -48,7 +55,7 @@ class HoursCounter extends Component {
     let isTooLow = totalDurationHours < 40;
     let hoursCounterStyle = {
       ...counterStyle,
-      width: '40%',
+
       color: isTooLow ? '#1ED760' : 'white',
       'font-weight': isTooLow ? 'bold' : 'normal'
     };
@@ -71,9 +78,6 @@ class Filter extends Component {
           onKeyUp={event => this.props.onTextChange(event.target.value)}
           style={{ ...defaultStyle, color: 'black', 'font-size': '20px', padding: '10px' }}
         />
-        <br />
-        <br />
-        <br />
       </div>
     );
   }
@@ -87,24 +91,56 @@ class Playlist extends Component {
       <div
         style={{
           ...defaultStyle,
-          width: '25%',
-          padding: '10px',
-          display: 'inline-block',
-          'background-color': isOdd(this.props.index) ? '#121212' : '#303030'
+          padding: '10px'
         }}
       >
-        <h2> {playlist.name} </h2>
-        <img src={playlist.imageUrl} style={{ width: '160px' }} />
-        <ul style={{ 'margin-top': '10px', 'font-weight': 'bold' }}>
-          {playlist.songs.map(song => <li style={{ 'padding-top': '2px' }}> {song.name} </li>)}
-        </ul>
+        <div
+          className="internalGridItems"
+          style={{
+            display: 'grid',
+            'grid-template-columns': '1fr'
+          }}
+        >
+          <img src={playlist.imageUrl} style={{ width: '100%' }} />
+          <h2
+            style={{
+              'margin-top': '10px',
+              'font-size': '22px',
+              'font-style': 'bold',
+              'font-family':
+                'HelveticaNeue, Helvetica Neue, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
+
+              color: '#fff'
+            }}
+          >
+            {' '}
+            {playlist.name}{' '}
+          </h2>
+          <ul
+            style={{
+              'margin-top': '10px',
+              'font-weight': 'bold',
+              color: '#AEAEAE',
+              'font-family':
+                'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
+              'font-weight': '500',
+              'font-style': 'italic',
+              'font-size': '14px'
+            }}
+          >
+            {' '}
+            feat:
+            {playlist.songs.map(song => (
+              <li style={{ 'padding-top': '2px', 'font-style': 'normal', 'font-size': '14px', 'margin-left': '10px' }}>
+                {' '}
+                - {song.name}{' '}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }
-}
-
-function isOdd(num) {
-  return num % 2;
 }
 
 /* MAIN COMPONENT */
@@ -191,29 +227,95 @@ class App extends Component {
       <div className="App">
         {this.state.user ? (
           <div>
-            <h1 style={{ ...defaultStyle, 'font-size': '54px', 'margin-top': '5px' }}>
-              {' '}
-              {this.state.user.name}'s Playlists
-            </h1>
+            <div
+              className="topItems"
+              style={{
+                margin: '15px',
+                display: 'grid',
+                'grid-template-columns': '3fr 1fr 1fr 0.5fr',
+                'align-items': 'center',
+                'justify-items': 'center',
+                'background-color': 'black',
+                padding: '15px 5px 15px 5px'
+              }}
+            >
+              <h1
+                className="playlistName"
+                style={{
+                  ...defaultStyle,
+                  'font-size': '34px',
+                  'font-family':
+                    'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
+                  'font-weight': '700'
+                }}
+              >
+                {' '}
+                {this.state.user.name}'s Playlists
+              </h1>
+              <div className="bothCounters" style={{ 'text-align': 'center', width: '80%' }}>
+                <PlaylistCounter playlists={playlistToRender} />
+                <HoursCounter playlists={playlistToRender} />
+              </div>
 
-            <PlaylistCounter playlists={playlistToRender} />
+              <Filter className="mainFilter" onTextChange={text => this.setState({ filterString: text })} />
+              <img
+                src={require('./images/Spotify_Icon_CMYK_White copy.png')}
+                className="spotifyIcon"
+                style={{ 'padding-left': '5px', height: '42px' }}
+              />
+            </div>
 
-            <HoursCounter playlists={playlistToRender} />
-
-            <Filter onTextChange={text => this.setState({ filterString: text })} />
-            {playlistToRender.map((playlist, i) => <Playlist playlist={playlist} index={i} />)}
+            <div
+              className="playlistGridStyle"
+              style={{
+                display: 'grid',
+                'grid-template-columns': 'repeat(4, 1fr)',
+                'grid-gap': '20px',
+                'background-color': '#181818',
+                'margin-top': '15px',
+                padding: '30px 15px 30px 15px'
+              }}
+            >
+              {playlistToRender.map((playlist, i) => <Playlist playlist={playlist} index={i} />)}
+            </div>
           </div>
         ) : (
-          <button
-            onClick={() => {
-              window.location = window.location.href.includes('localhost')
-                ? 'http://localhost:8888/login'
-                : 'https://better-playlists-cdt-backend.herokuapp.com/login';
+          <div
+            style={{
+              display: 'grid',
+              'align-self': 'center',
+              'jusity-self': 'center'
             }}
-            style={{ padding: '20px', 'font-size': ' 50px', 'margin-top': '20px' }}
           >
-            Sign in with Spotify
-          </button>
+            <button
+              onClick={() => {
+                window.location = window.location.href.includes('localhost')
+                  ? 'http://localhost:8888/login'
+                  : 'https://better-playlists-cdt-backend.herokuapp.com/login';
+              }}
+              style={{
+                padding: '20px',
+                'font-size': ' 35px',
+                'margin-top': '150px',
+                'background-color': '#1DB954',
+                border: 'none',
+                width: '35%',
+                'justify-self': 'center',
+                'border-radius': '50px',
+                color: 'white',
+                'font-family':
+                  'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif',
+                'font-weight': '700',
+                'align-self': 'center'
+              }}
+            >
+              Sign in with Spotify
+              <img
+                src={require('./images/Spotify_Icon_CMYK_White copy.png')}
+                style={{ padding: '5px 0 0 15px', height: '32px' }}
+              />{' '}
+            </button>
+          </div>
         )}
       </div>
     );
