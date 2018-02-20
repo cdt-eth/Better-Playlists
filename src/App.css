@@ -41,7 +41,7 @@ spotifyIcon {
 }
 
 @media only screen and (max-width: 767px) {
-  button .loginButton {
+  .loginButton {
     display: grid;
     font-size: 35px;
     margin-top: 150px;
