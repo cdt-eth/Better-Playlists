@@ -254,7 +254,7 @@ class App extends Component {
                 {' '}
                 {this.state.user.name}'s Playlists
               </h1>
-              <div className="bothCounters" style={{ 'text-align': 'center', width: '80%' }}>
+              <div className="bothCounters" style={{ 'text-align': 'right', width: '80%' }}>
                 <PlaylistCounter playlists={playlistToRender} />
                 <HoursCounter playlists={playlistToRender} />
               </div>
