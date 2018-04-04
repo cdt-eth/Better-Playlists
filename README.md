@@ -1,4 +1,4 @@
-<img width="50%" alt="screen shot 2018-03-28 at 11 48 29 am" src="https://user-images.githubusercontent.com/26611339/38328532-2a8dace2-3819-11e8-984c-9498a3c87b12.png"><img width="50%" alt="screen shot 2018-03-28 at 11 38 16 am" src="https://user-images.githubusercontent.com/26611339/38040119-db00de84-327c-11e8-91bb-8bddc84c6f5c.png">
+<img width="50%" alt="screen shot 2018-03-28 at 11 48 29 am" src="https://user-images.githubusercontent.com/26611339/38329045-93b4626e-381a-11e8-8939-c970f1c90520.png"><img width="50%" alt="screen shot 2018-03-28 at 11 38 16 am" src="https://user-images.githubusercontent.com/26611339/38040119-db00de84-327c-11e8-91bb-8bddc84c6f5c.png">
 
 
 Better Playlists
