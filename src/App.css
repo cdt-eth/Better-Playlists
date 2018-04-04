@@ -1,7 +1,11 @@
 html,
 body {
-  background-color: black;
+  /* background-color: black; */
+  background-image: url('./images/homepage.png');
+  background-color: rgba(0, 0, 0, 0.2);
 }
+
+
 body {
   display: grid;
 }
@@ -23,33 +27,19 @@ spotifyIcon {
   grid-area: 'spotIcon';
 }
 
-@media only screen and (max-width: 767px) {
-  topItems {
+
+@media (max-width: 600px) {
+  .playlistGridFull {
     display: grid;
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 0;
-    justify-items: center;
-    /* grid-column: 1/-1; */
-    /* grid-auto-rows: minmax(100px, auto); */
-    /* grid-template-areas:
-      'name'
-      'counters'
-      'filter'
-      'spotIcon';*/
+    grid-template-columns: repeat (3, 1fr);
   }
 }
 
-@media only screen and (max-width: 767px) {
-  .loginButton {
+@media (max-width: 600px) {
+  button {
     display: grid;
-    font-size: 35px;
-    margin-top: 150px;
-    background-color: rgb(47, 213, 102);
-    border: none;
+    margin-top: 75px;
     width: 70%;
-    justify-self: center;
     border-radius: 70px;
-    color: white;
   }
 }

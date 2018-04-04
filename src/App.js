@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'reset-css/reset.css';
 import './App.css';
 import queryString from 'query-string';
 
@@ -16,13 +15,6 @@ let counterStyle = {
   'line-height': '30px'
 };
 
-// let playlistGridStyle = {
-//   display: 'grid',
-//   'grid-template-columns': 'repeat(3, 1fr',
-//   'grid-gap': '10x',
-//   'justify-content': 'center'
-// };
-
 /* PLAYLISTCOUNTER COMPONENT */
 class PlaylistCounter extends Component {
   render() {
@@ -34,12 +26,6 @@ class PlaylistCounter extends Component {
     );
   }
 }
-
-/*
-text #AEAEAE
-dark #121212
-light #303030
-*/
 
 /* HOURSCOUNTER COMPONENT */
 class HoursCounter extends Component {
@@ -290,7 +276,6 @@ class App extends Component {
             }}
           >
             <button
-              className="loginButton"
               onClick={() => {
                 window.location = window.location.href.includes('localhost')
                   ? 'http://localhost:8888/login'
