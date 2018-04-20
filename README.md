@@ -37,6 +37,7 @@ React app that uses the Spotify API to log into your account and dynamically ren
 - Spotify API
 - Oauth
 - npm
+- Prettier
 - Heroku
 - Inline Styles
 
